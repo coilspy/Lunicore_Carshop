@@ -11,6 +11,7 @@ fs.readFile("./data.json", 'utf8', function(err,data) {
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
+    res.header('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', "application/json; charset =utf-8");
     if(req.method == "GET" && req.url === "/employees")
     {
@@ -45,12 +46,12 @@ const server = http.createServer((req, res) => {
             database.carshop.carmodels.push(newCar);
             res.end("you just sent a POST request, i recieved: " + body);
             updateJSONFile('./dataNew.json');
-            console.log("end of request");
+            console.log("Recieved POST/carmodels request");
         })
     }
     else {
         res.writeHead(404);
-        res.write("Error parsing request");
+        res.write("Error 404 - page not found");
         res.end();
     }
 });
@@ -87,7 +88,6 @@ function hideSalesAttribute(key, value)
     else return value;
 }
 
-function updateJSONFile(filepath = './dataNew.json')
-{
+function updateJSONFile(filepath = './dataNew.json'){
     fs.writeFile(filepath, JSON.stringify(database));
 }
