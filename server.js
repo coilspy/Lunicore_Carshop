@@ -11,7 +11,6 @@ fs.readFile("./data.json", 'utf8', function(err,data) {
 
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
-    res.header('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', "application/json; charset =utf-8");
     if(req.method == "GET" && req.url === "/employees")
     {
