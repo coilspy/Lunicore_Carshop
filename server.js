@@ -8,7 +8,6 @@ fs.readFile("./data.json", 'utf8', function(err,data) {
     console.log("File read");
     database = JSON.parse(data);
 });
-
 const server = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', "application/json; charset =utf-8");
@@ -44,7 +43,7 @@ const server = http.createServer((req, res) => {
             let newCar = JSON.parse(body);
             database.carshop.carmodels.push(newCar);
             res.end("you just sent a POST request, i recieved: " + body);
-            updateJSONFile('./dataNew.json');
+            updateJSONFile('./data.json');
             console.log("Recieved POST/carmodels request");
         })
     }
