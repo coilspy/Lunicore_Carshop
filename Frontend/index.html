@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <header>
+        <h1>Lunicore CarShop Services</h1>
+    </header>
+    <span>
+        <button class="getEmployees" onclick="httpGETRequest('employees')">Get Employees</button>
+        <button class="getCarmodels" onclick="httpGETRequest('carmodels')">Get Carmodels</button>
+        <button class="getTotalsales" onclick="httpGETRequest('totalsales')">Get Totalssales</button>
+    </span>
+
+    <p id="jsonData"></p>
+
+    <div class="addNewEntry">
+        <form id="employeePOST">
+            <div>ID: 
+                <input type="number", name="id">
+            </div>
+            <div> First name:
+                <input type="text" , name="firstname">
+            </div>
+            <div>
+                Last name:
+                <input type="text" , name="lastname">
+            </div>
+        </form>
+        <button onclick="httpPOSTRequest('employees', 'employeePOST')">Add employee</button>
+    </div>
+
+    <div class="addNewEntry">
+        <form id="carmodelPOST">
+            <div> ID:
+                <input type="number" name="id">
+            </div>
+            <div>
+                Brand
+                <input type="text" name="brand">
+            </div>
+            <div>
+                Model:
+                <input type="text" name="model">
+            </div>
+            <div>
+                Price:
+                <input type="number" name="price">
+            </div>
+        </form>
+        <button onclick="httpPOSTRequest('carmodels', 'carmodelPOST')">Add car model</button>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+
+</html>
